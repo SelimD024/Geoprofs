@@ -15,11 +15,22 @@ namespace Geoprofs
 
             // routes.MapRoute() Kijkt naar of er een match is gevonden tussen de url en de url waarvan er een request is ontvangen
             
+            
+            // Routes voor paginas
+            routes.MapRoute(
+                name: "HomeActions",
+                url: "{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional } ,
+                constraints: new {action = "About|Contact|Testpage"}
+            );
+            
+            // Default route settings
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            
         }
     }
 }
