@@ -10,7 +10,7 @@ namespace Geoprofs.Controllers
     {
         public ActionResult Testpage()
         {
-            Response.Headers.Add("My-Custom-header", "Header value");
+            Response.Headers.Add("My-Custdddom-header", "Header value");
             return View();
         }
     }

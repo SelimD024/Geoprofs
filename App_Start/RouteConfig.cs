@@ -13,6 +13,8 @@ namespace Geoprofs
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // routes.MapRoute() Kijkt naar of er een match is gevonden tussen de url en de url waarvan er een request is ontvangen
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
