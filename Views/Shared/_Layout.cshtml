@@ -1,42 +1,81 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="cs-navbar">
+        <div class="logo">
+            <img src="logo.svg" alt="My Happy SVG" width="30" height="40" />
+            <h2>GeoProfs</h2>
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
-        </div>
+        <ul class="cs-menu">
+            <a class="cs-menu-item selected"><img src="House.svg" alt="My Happy SVG" width="30" height="40" />
+            <li>Dashboard</li>
+            </a>
+            <a class="cs-menu-item"><img src="icon-card.svg" alt="My Happy SVG" width="30" height="40" />
+            <li>Verlofaanvraag</li>
+            </a>
+            <a class="cs-menu-item"><img src="icon-card.svg" alt="My Happy SVG" width="30" height="40" />
+            <li>Verlofplanning</li>
+            </a>
+            <a class="cs-menu-item"><img src="icon-card.svg" alt="My Happy SVG" width="30" height="40" />
+            <li>Bezettings overzicht</li>
+            </a>
+            <a class="cs-menu-item"><img src="icon-card.svg" alt="My Happy SVG" width="30" height="40" />
+            <li>Goedkeurings procedures</li>
+            </a>
+            <a class="cs-menu-item"><img src="icon-card.svg" alt="My Happy SVG" width="30" height="40" />
+            <li>Meldingen</li>
+            </a>
+        </ul>
     </div>
-</div>
-<div class="container body-content">
-    @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; @DateTime.Now.2023 - My ASP.NET Application</p>
-    </footer>
-</div>
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+    <div class="">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.2023 - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add event listener to toggle custom checkbox state
+        var customCheckboxes = document.querySelectorAll(".custom-checkbox");
+
+        for (var i = 0; i < customCheckboxes.length; i++) {
+            customCheckboxes[i].addEventListener("click", function () {
+                this.classList.toggle("checked");
+            });
+        }
+
+        var activeDropdown = null;
+
+        function toggleDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+
+            if (activeDropdown && activeDropdown !== dropdown) {
+                activeDropdown.classList.remove("show");
+            }
+
+            dropdown.classList.toggle("show");
+
+            if (dropdown.classList.contains("show")) {
+                activeDropdown = dropdown;
+            } else {
+                activeDropdown = null;
+            }
+        }
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
