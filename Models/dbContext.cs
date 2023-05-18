@@ -9,7 +9,9 @@ namespace Geoprofs.Models
         public dbContext() : base("GeoDatabase")
         {
 
+
         }
+
 
         public DbSet<User> Users { get; set; }
         public DbSet<Verlof> Verloven { get; set; }

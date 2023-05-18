@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Content",
     "\\Views",
-    "\\Views\\Home",
-    "\\Views\\Shared"
+    "\\Views\\Home"
   ],
-  "SelectedNode": "\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\Web.config",
   "PreviewInSolutionExplorer": false
 }
