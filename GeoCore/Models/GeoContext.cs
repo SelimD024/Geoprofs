@@ -1,4 +1,4 @@
-﻿using Geoprofs.Models;
+﻿using GeoCore.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GeoCore.Models;
