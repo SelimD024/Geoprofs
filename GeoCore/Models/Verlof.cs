@@ -1,4 +1,4 @@
-﻿namespace Geoprofs.Models
+﻿namespace  GeoCore.Models
 {
     public class Verlof
     {
@@ -7,5 +7,5 @@
         public string? Reden { get; set; }
         public bool? Status { get; set; }
         public User? Gebruiker { get; set; }
-    }
+    } 
 }
