@@ -1,4 +1,4 @@
-﻿namespace Geoprofs.Models
+﻿namespace  GeoCore.Models
 {
     public class User
     {
