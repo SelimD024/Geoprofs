@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geoprofs", "Geoprofs.csproj", "{F88B569C-887E-4541-BE4D-759CA44FC709}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCore", "GeoCore\GeoCore.csproj", "{6CFEB0F6-F050-4D69-BF4F-9BCD90CF7502}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Geoprofs-core", "Geoprofs-core", "{D1AFD741-7D54-49F3-B751-AEE037B72C64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,12 @@ Global
 		{F88B569C-887E-4541-BE4D-759CA44FC709}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F88B569C-887E-4541-BE4D-759CA44FC709}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F88B569C-887E-4541-BE4D-759CA44FC709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CFEB0F6-F050-4D69-BF4F-9BCD90CF7502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CFEB0F6-F050-4D69-BF4F-9BCD90CF7502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CFEB0F6-F050-4D69-BF4F-9BCD90CF7502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CFEB0F6-F050-4D69-BF4F-9BCD90CF7502}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6CFEB0F6-F050-4D69-BF4F-9BCD90CF7502} = {D1AFD741-7D54-49F3-B751-AEE037B72C64}
 	EndGlobalSection
 EndGlobal
