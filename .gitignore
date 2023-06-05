@@ -5,6 +5,5 @@ riderModule.iml
 .vs/
 *.suo
 *.sqlite
-Geoprofs.csproj.user
 package-lock.json
 /_ReSharper.Caches/
