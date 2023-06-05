@@ -14,10 +14,10 @@ public class UserauthController : Controller
         _context = context;
     }
 
-    public IActionResult Login()
-    {
-        return View();
-    }
+        public IActionResult Login()
+        {
+            return View();
+        }
 
     [HttpPost]
     public async Task <IActionResult> Register(User user)
