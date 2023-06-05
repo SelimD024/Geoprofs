@@ -1,4 +1,14 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\GeoCore",
+    "\\GeoCore\\Views",
+    "\\GeoCore\\Views\\Home",
+    "\\Views",
+    "\\Views\\Home",
+    "\\Views\\Shared",
+    "\\Views\\Test"
+  ],
+  "SelectedNode": "\\GeoCore\\Views\\Userauth",
   "PreviewInSolutionExplorer": false
 }
