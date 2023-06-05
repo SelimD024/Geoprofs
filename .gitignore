@@ -2,4 +2,8 @@ bin/
 obj/
 /packages/
 riderModule.iml
+.vs/
+*.suo
+*.sqlite
+package-lock.json
 /_ReSharper.Caches/
