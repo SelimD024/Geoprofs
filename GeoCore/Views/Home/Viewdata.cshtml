@@ -1,0 +1,19 @@
+﻿@using Microsoft.EntityFrameworkCore
+@model IEnumerable<Verlof>
+
+
+
+@{
+    ViewData["Title"] = "Home Pageee";
+}
+
+<div class="text-center">
+    
+    <ul>
+        @foreach (var item in Model )
+        {
+            <li>@item.Reden</li>
+            
+        }
+    </ul>
+</div>
