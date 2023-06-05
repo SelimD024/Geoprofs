@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "ExpandedNodes": [
     ""
   ],
@@ -7,5 +8,18 @@
   "ExpandedNodes": [],
 >>>>>>> 5dafcf737d1c5258f0e3a31e8b36eefb55fc41bd
   "SelectedNode": "\\Geoprofs.sln",
+=======
+  "ExpandedNodes": [
+    "",
+    "\\GeoCore",
+    "\\GeoCore\\Views",
+    "\\GeoCore\\Views\\Home",
+    "\\Views",
+    "\\Views\\Home",
+    "\\Views\\Shared",
+    "\\Views\\Test"
+  ],
+  "SelectedNode": "\\GeoCore\\Views\\Userauth",
+>>>>>>> 50b343f1394d55c3f9634faa27a5445629feacc8
   "PreviewInSolutionExplorer": false
 }
