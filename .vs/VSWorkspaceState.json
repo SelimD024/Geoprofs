@@ -1,14 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\clientapp",
     "\\GeoCore",
     "\\GeoCore\\Views",
     "\\GeoCore\\Views\\Home",
-    "\\Views",
-    "\\Views\\Home",
-    "\\Views\\Shared",
-    "\\Views\\Test"
+    "\\GeoCore\\Views\\Shared"
   ],
-  "SelectedNode": "\\GeoCore\\Views\\Userauth",
+  "SelectedNode": "\\GeoCore\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }
