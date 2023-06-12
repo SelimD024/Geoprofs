@@ -6,6 +6,7 @@ import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { faBarsProgress } from "@fortawesome/free-solid-svg-icons";
+import profilePicture from "../src/assets/person.jpeg"
 
 function Dashboard() {
   const [count, setCount] = useState(0);
@@ -57,6 +58,7 @@ function Dashboard() {
         <div className="cs-body">
           <div className="cs-header">
             <div className="profile-picture">
+              <img src={profilePicture} alt="" width="100" height="50"/>
               <div className="fa fa-camera fa-3x"></div>
             </div>
             <div className="username">

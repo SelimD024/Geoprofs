@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Logo from "../assets/react.svg";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
@@ -10,7 +11,7 @@ function Navbar(props) {
   return (
     <div className="cs-navbar">
       <div className="logo">
-        <img src="logo.svg" alt="My Happy SVG" width="30" height="40" />
+      <img src={Logo} alt="React Logo" />
         <h2>GeoProfs</h2>
       </div>
       <ul className="cs-menu">

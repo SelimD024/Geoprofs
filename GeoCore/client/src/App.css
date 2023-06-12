@@ -20,9 +20,9 @@
 
 .cs-navbar {
   height: 100vh;
-  background-color: #f1f1f1;
+  background-color: #f0f8ed;
   padding: 0 10%;
-  box-shadow: 0px 2px 30px rgba(34, 37, 169, 0.23);
+  box-shadow: 0px 2px 30px rgba(192, 192, 204, 0.23);
 }
 
 .cs-navbar .logo {
@@ -50,19 +50,18 @@
   position: relative;
 }
 
-
 .cs-menu .cs-menu-item li {
   display: none;
 }
 
 .cs-menu .cs-menu-item:not(.selected):hover {
   cursor: pointer;
-  background-color: #4340da6e;
+  background-color: #ddf0d6;
   border-radius: 12px;
 }
 
 .selected {
-  background-color: #4340da;
+  background-color: #8aca72;
   border-radius: 12px;
 }
 
@@ -77,7 +76,7 @@
 }
 
 .button {
-  background-color: #4340da;
+  background-color: #027a02;
   padding: 11px 10px;
   border-radius: 8px;
   border: none;
@@ -112,7 +111,7 @@
 
 .cs-body {
   padding: 57px 25px 0px 25px;
-  background: linear-gradient(to right, #4340da05, transparent);
+  background: linear-gradient(to right, #e6efe2, transparent);
   position: relative;
 }
 
@@ -124,9 +123,14 @@
 }
 
 .cs-body .cs-header .profile-picture {
-  padding: 50px;
   border-radius: 360px;
   background-color: #edf6fe;
+}
+
+.cs-body .cs-header .profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 360px;
 }
 
 .cs-body .cs-header .username {
@@ -149,7 +153,7 @@
 }
 
 .cs-body .cs-cards .cs-card {
-  border: 1px solid #eaeaea;
+  border: 1px solid #bcbcbc;
   border-radius: 14px;
   padding: 14px 25px;
 }
@@ -321,10 +325,21 @@
 
 .dropdown-menu.show li {
   padding: 5px;
+  z-index: 1;
+  position: relative;
+}
+
+.dropdown-menu.show li:hover{
+  background-color: rgb(189, 202, 184);
 }
 
 .cs-body .cs-form .cs-table {
   width: 100%;
+}
+
+.cs-body .cs-form .cs-table tbody:first-child{
+  gap: 10px;
+  display: grid;
 }
 
 .cs-body .cs-form .cs-table .cs-table-head {
@@ -342,6 +357,17 @@
   grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+
+.cs-body .cs-form.verlof .cs-table tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.cs-body .cs-form.verlof .cs-table tr th:first-child{
+margin: 0;
+}
+
 .cs-body .cs-form .cs-table tr th {
   text-align: start;
 }
@@ -355,19 +381,58 @@ input[type="checkbox"] {
 }
 
 /* Custom checkbox style */
+.checkbox-cell{
+  display: flex;
+  gap: 10px;
+}
+
 .custom-checkbox {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-color: #ffffff;
-  border: 2px solid #2250ff;
+  background-color: #89ca7222;
+  border: 2px solid #8aca72;
   cursor: pointer;
   border-radius: 5px;
+  position: relative;
 }
+
+.custom-checkbox.decline{
+  border: 2px solid red!important;
+}
+
+.custom-checkbox.accept{
+  border: 2px solid green!important;
+}
+
 
 /* Custom checkbox checked style */
 .custom-checkbox.checked {
-  background-color: #2250ff;
+  background-color: #8aca72;
+}
+
+.custom-checkbox.decline.checked {
+  background-color: red;
+}
+
+.custom-checkbox.checked::before {
+  content: '✓';
+  position: absolute;
+  font-size: 18px;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-checkbox.decline.checked::before {
+  content: 'X'!important;
+  position: absolute;
+  font-size: 18px;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (min-width: 568px) {
