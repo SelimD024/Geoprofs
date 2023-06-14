@@ -11,4 +11,6 @@ public class GeoContext : DbContext
     }
     public DbSet<User> Users { get; set; }
     public DbSet<Verlof> Verloven { get; set; }
+    
+
 }

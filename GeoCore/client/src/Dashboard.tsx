@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import axios from 'axios';
 import Navbar from "./Components/navbar";
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,14 +7,13 @@ import { faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { faBarsProgress } from "@fortawesome/free-solid-svg-icons";
 
 function Dashboard() {
-  const [count, setCount] = useState(0);
-
   useEffect(() => {
     const buttonsContainer = document.querySelector(".cs-buttons");
     const popUp = document.querySelector(".cs-pop-up");
-    const popUpContents = Array.from(
-      popUp.querySelectorAll(".cs-pop-up .inner > *")
-    );
+
+    const popUpContents = Array.from(popUp.querySelectorAll(".cs-pop-up .inner > *")) || [];
+
+    // Rest of your code...
 
     const handleButtonClick = (event) => {
       const button = event.target.closest(".button");
@@ -48,141 +46,172 @@ function Dashboard() {
     };
   }, []);
 
+  const [verlofData, setVerlofData] = useState({
+    verlofTypeID: '',
+    startDate: '',
+    endDate: '',
+    reden: '',
+  });
+
+  const handleChange = (event) => {
+    setVerlofData({
+      ...verlofData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    axios
+        .post('http://localhost:44362/api/verlofaanvragen', verlofData)
+        .then((response) => {
+          console.log(response.data);
+          // Toon een bevestigingsbericht aan de gebruiker of voer andere acties uit
+        })
+        .catch((error) => {
+          console.error('Er is een fout opgetreden!', error);
+          // Toon een foutmelding aan de gebruiker
+        });
+  };
+
   return (
-    <>
-      <div className="body">
+      <>
+        <div className="body">
 
-       <Navbar active="dashboard" />
+          <Navbar active="dashboard" />
 
-        <div className="cs-body">
-          <div className="cs-header">
-            <div className="profile-picture">
-              <div className="fa fa-camera fa-3x"></div>
-            </div>
-            <div className="username">
-              <h1>Stijn</h1>
-              <div className="fa fa-pen"></div>
-            </div>
-          </div>
-          <div className="cs-buttons">
-            <a className="button cs-verlofaanvraag">Verlof aanvragen</a>
-            <a className="button cs-verlofopgeven">Verlofreden opgeven</a>
-            <a className="button cs-verlofplanning">Verlofplanning</a>
-          </div>
-          <div className="cs-cards">
-            <div className="cs-card">
-              <div className="cs-card-header">
-                <p>Status verlof aanvraag</p>
-                <FontAwesomeIcon icon={faBarsProgress} />
+          <div className="cs-body">
+            <div className="cs-header">
+              <div className="profile-picture">
+                <div className="fa fa-camera fa-3x"></div>
               </div>
-              <h1>In behandeling</h1>
-              <p>Dec 21, 2022 t/m Januari 10, 2023</p>
-              <p>Vakantie</p>
-            </div>
-            <div className="cs-card">
-              <div className="cs-card-header">
-                <p>Status verlof aanvraag</p>
-                <FontAwesomeIcon icon={faChartPie} />
+              <div className="username">
+                <h1>Stijn</h1>
+                <div className="fa fa-pen"></div>
               </div>
-              <h1>In behandeling</h1>
-              <p>Dec 21, 2022 t/m Januari 10, 2023</p>
-              <p>Vakantie</p>
             </div>
-          </div>
-          <div className="cs-pop-up cs-hidden">
-            <div className="inner">
-              <div className="cs-verlofaanvraag cs-hidden">
-                <h1 className="cs-head">Verlof aanvragen</h1>
-                <div className="cs-numbers">
-                  <div className="cs-number">
-                    <h1>40</h1>
-                    <p>uur opgenomen</p>
+            <div className="cs-buttons">
+              <a className="button cs-verlofaanvraag">Verlof aanvragen</a>
+              <a className="button cs-verlofopgeven">Verlofreden opgeven</a>
+              <a className="button cs-verlofplanning">Verlofplanning</a>
+            </div>
+            <div className="cs-cards">
+              <div className="cs-card">
+                <div className="cs-card-header">
+                  <p>Status verlof aanvraag</p>
+                  <FontAwesomeIcon icon={faBarsProgress} />
+                </div>
+                <h1>In behandeling</h1>
+                <p>Dec 21, 2022 t/m Januari 10, 2023</p>
+                <p>Vakantie</p>
+              </div>
+              <div className="cs-card">
+                <div className="cs-card-header">
+                  <p>Status verlof aanvraag</p>
+                  <FontAwesomeIcon icon={faChartPie} />
+                </div>
+                <h1>In behandeling</h1>
+                <p>Dec 21, 2022 t/m Januari 10, 2023</p>
+                <p>Vakantie</p>
+              </div>
+            </div>
+            <div className="cs-pop-up cs-hidden">
+              <div className="inner">
+                <div className="cs-verlofaanvraag cs-hidden">
+                  <h1 className="cs-head">Verlof aanvragen</h1>
+                  <div className="cs-numbers">
+                    <div className="cs-number">
+                      <h1>40</h1>
+                      <p>uur opgenomen</p>
+                    </div>
+                    <div className="cs-line"></div>
+                    <div className="cs-number">
+                      <h1>-40</h1>
+                      <p>uur baschikbaar</p>
+                    </div>
                   </div>
-                  <div className="cs-line"></div>
-                  <div className="cs-number">
-                    <h1>-40</h1>
-                    <p>uur baschikbaar</p>
+                  <div className="cs-input-forms">
+                    <form action="POST">
+                      <div className="cs-input">
+                        <p>Startdatum</p>
+                        <input
+                            type="date"
+                            className="cs-searchbar"
+                            placeholder="Startdatum"
+                        />
+                      </div>
+                      <div className="cs-input">
+                        <p>Einddatum</p>
+                        <input
+                            type="date"
+                            className="cs-searchbar"
+                            placeholder="Startdatum"
+                        />
+                      </div>
+                      <div className="cs-input">
+                        <p>Beschrijving</p>
+                        <input
+                            type="text"
+                            className="cs-searchbar"
+                            placeholder="Beschrijving aanvraag"
+                        />
+                      </div>
+                      <div className="cs-input-buttons">
+                        <a className="button button-grey cs-cancel">Annuleren</a>
+                        <a className="button">Versturen</a>
+                      </div>
+                    </form>
                   </div>
                 </div>
-                <div className="cs-input-forms">
-                  <form action="POST">
-                    <div className="cs-input">
-                      <p>Startdatum</p>
-                      <input
-                        type="date"
-                        className="cs-searchbar"
-                        placeholder="Startdatum"
-                      />
-                    </div>
-                    <div className="cs-input">
-                      <p>Einddatum</p>
-                      <input
-                        type="date"
-                        className="cs-searchbar"
-                        placeholder="Startdatum"
-                      />
-                    </div>
-                    <div className="cs-input">
-                      <p>Beschrijving</p>
-                      <input
-                        type="text"
-                        className="cs-searchbar"
-                        placeholder="Beschrijving aanvraag"
-                      />
-                    </div>
-                    <div className="cs-input-buttons">
-                      <a className="button button-grey cs-cancel">Annuleren</a>
-                      <a className="button">Versturen</a>
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <div className="cs-verlofopgeven cs-hidden">
-                <h1 className="cs-head">Verlof opgeven</h1>
+                <div className="cs-verlofopgeven cs-hidden">
+                  <h1 className="cs-head">Verlof opgeven</h1>
 
-                <div className="cs-input-forms">
-                  <form action="POST">
-                    <div className="cs-input">
-                      <p>Startdatum</p>
+                  <div className="cs-input-forms">
+                    <form onSubmit={handleSubmit}>
                       <input
-                        type="date"
-                        className="cs-searchbar"
-                        placeholder="Startdatum"
+                          type="text"
+                          name="verlofTypeID"
+                          value={verlofData.verlofTypeID}
+                          onChange={handleChange}
+                          placeholder="VerlofTypeID"
                       />
-                    </div>
-                    <div className="cs-input">
-                      <p>Einddatum</p>
                       <input
-                        type="date"
-                        className="cs-searchbar"
-                        placeholder="Startdatum"
+                          type="text"
+                          name="startDate"
+                          value={verlofData.startDate}
+                          onChange={handleChange}
+                          placeholder="Startdatum"
                       />
-                    </div>
-                    <div className="cs-input">
-                      <p>Beschrijving</p>
                       <input
-                        type="text"
-                        className="cs-searchbar"
-                        placeholder="Beschrijving aanvraag"
+                          type="text"
+                          name="endDate"
+                          value={verlofData.endDate}
+                          onChange={handleChange}
+                          placeholder="Einddatum"
                       />
-                    </div>
-                    <div className="cs-input-buttons">
-                      <a className="button button-grey cs-cancel">Annuleren</a>
-                      <a className="button">Versturen</a>
-                    </div>
-                  </form>
+                      <input
+                          type="text"
+                          name="reden"
+                          value={verlofData.reden}
+                          onChange={handleChange}
+                          placeholder="Reden"
+                      />
+                      <button type="submit">Verlof aanvragen</button>
+                    </form>
+                  </div>
                 </div>
-              </div>
-              <div className="cs-verlofplanning cs-hidden">
-                <h1 className="cs-head">Verlofplanning</h1>
+                <div className="cs-verlofplanning cs-hidden">
+                  <h1 className="cs-head">Verlofplanning</h1>
 
-                <div className="cs-input-forms">
-                  <div className="cs-verlofplanningbox">
-                    <p>Beschrijving verlof</p>
-                    <p>Sun 16 Jul - Mon 17 Jul 2023</p>
-                    <div className="cs-label cs-approved">Approved</div>
-                    <div className="cs-input-buttons">
-                      <a className="button button-grey cs-cancel">Annuleren</a>
+                  <div className="cs-input-forms">
+                    <div className="cs-verlofplanningbox">
+                      <p>Beschrijving verlof</p>
+                      <p>Sun 16 Jul - Mon 17 Jul 2023</p>
+                      <div className="cs-label cs-approved">Approved</div>
+                      <div className="cs-input-buttons">
+                        <a className="button button-grey cs-cancel">Annuleren</a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -190,8 +219,7 @@ function Dashboard() {
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
   );
 }
 

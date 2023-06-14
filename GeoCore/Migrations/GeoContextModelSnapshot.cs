@@ -19,7 +19,7 @@ namespace GeoCore.Migrations
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Geoprofs.Models.User", b =>
+            modelBuilder.Entity("GeoCore.Models.User", b =>
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,16 +39,16 @@ namespace GeoCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("Geoprofs.Models.Verlof", b =>
+            modelBuilder.Entity("GeoCore.Models.Verlof", b =>
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CreatedDate")
+                    b.Property<int?>("EndDate")
                         .HasColumnType("int");
 
                     b.Property<int?>("GebruikerId")
@@ -57,19 +57,26 @@ namespace GeoCore.Migrations
                     b.Property<string>("Reden")
                         .HasColumnType("longtext");
 
+                    b.Property<int?>("StartDate")
+                        .HasColumnType("int");
+
                     b.Property<bool?>("Status")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("VerlofTypeID")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
                     b.HasIndex("GebruikerId");
 
-                    b.ToTable("Verloven");
+                    b.ToTable("Verloven", (string)null);
                 });
 
-            modelBuilder.Entity("Geoprofs.Models.Verlof", b =>
+            modelBuilder.Entity("GeoCore.Models.Verlof", b =>
                 {
-                    b.HasOne("Geoprofs.Models.User", "Gebruiker")
+                    b.HasOne("GeoCore.Models.User", "Gebruiker")
                         .WithMany()
                         .HasForeignKey("GebruikerId");
 
