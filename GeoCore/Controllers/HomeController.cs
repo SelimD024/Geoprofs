@@ -18,7 +18,14 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Index(Verlof verlof)
+
+    public IActionResult Create([FromBody] User user)
+    {
+        return Ok(new { message = "Hallo" });
+    }
+
+    /*[HttpPost]*/
+    /*public async Task<IActionResult> Index(Verlof verlof)
     {
         if (ModelState.IsValid)
         {
@@ -27,20 +34,22 @@ public class HomeController : Controller
             return RedirectToAction(nameof(Index));
         }
         return View(verlof);
-    }
+    }*/
 
+    /*
     public IActionResult Index()
     {
         return View(new Verlof());
     }
+    */
 
-    public IActionResult Privacy()
+    /*public IActionResult Privacy()
     {
         
         return View();
-    }
+    }*/
 
-    public IActionResult Viewdata()
+    /*public IActionResult Viewdata()
     {
         var items = _context.Verloven.ToList();
 
@@ -50,7 +59,7 @@ public class HomeController : Controller
         }
 
         return View(items);
-    }
+    }*/
     
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

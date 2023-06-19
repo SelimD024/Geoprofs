@@ -9,7 +9,6 @@
 
         public string? Reden { get; set; }
         public bool? Status { get; set; }
-        public User? Gebruiker { get; set; }
 
     } 
 }

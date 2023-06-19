@@ -14,4 +14,11 @@
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="client\package-lock.json" />
+      <_ContentIncludedByDefault Remove="client\package.json" />
+      <_ContentIncludedByDefault Remove="client\tsconfig.json" />
+      <_ContentIncludedByDefault Remove="client\tsconfig.node.json" />
+    </ItemGroup>
+
 </Project>
