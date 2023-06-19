@@ -1,8 +1,21 @@
-using GeoCore.Models;
+﻿using GeoCore.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+// ↓ Add the following lines: ↓
+builder.Services.AddSpaStaticFiles(configuration => {
+    configuration.RootPath = "clientapp/dist";
+});
+// ↑ these lines ↑
+
+var app = builder.Build();
 
 // Add Database connection
 
