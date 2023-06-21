@@ -12,9 +12,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Router>
       <Switch>
         <Route exact path="/">
-          <App />
-        </Route>
-        <Route exact path="/Dashboard">
           <Dashboard />
         </Route>
         <Route exact path="/Bezetting">

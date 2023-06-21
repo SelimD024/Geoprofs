@@ -115,6 +115,7 @@ function Verlof() {
                   <span className="custom-checkbox accept"></span>
                 </td>
               </tr>
+              <div className="button">Submit</div>
             </tbody>
           </table>
         </div>

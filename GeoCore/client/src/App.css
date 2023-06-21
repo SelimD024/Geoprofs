@@ -63,6 +63,7 @@
 .selected {
   background-color: #8aca72;
   border-radius: 12px;
+  padding: 10px;
 }
 
 .selected * {
@@ -403,6 +404,14 @@ input[type="checkbox"] {
 
 .custom-checkbox.accept{
   border: 2px solid green!important;
+}
+
+.dropdown-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  
 }
 
 
