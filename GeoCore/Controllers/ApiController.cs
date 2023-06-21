@@ -6,9 +6,15 @@ namespace GeoCore.Controllers;
 
 public class ApiController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<ApiController> _logger;
     private readonly GeoContext _context;
     
+    public ApiController(ILogger<ApiController> logger, GeoContext context)
+    {
+        _logger = logger;
+        _context = context;
+    }
+
     
     [HttpPost]
     public async Task<IActionResult> Verlof([FromBody] Verlof verlof)
@@ -23,6 +29,4 @@ public class ApiController : Controller
 
         return Ok(verlof);
     }
-    
-    
 }
