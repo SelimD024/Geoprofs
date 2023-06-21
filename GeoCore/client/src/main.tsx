@@ -5,6 +5,7 @@ import App from './App.tsx'
 import Bezetting from './Bezetting.tsx'
 import Dashboard from './Dashboard.tsx'
 import Verlof from './Verlof.tsx'
+import Login from "./Login.tsx";
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -23,8 +24,13 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route exact path="/Verlof">
           <Verlof />
         </Route>
+        <Route exact path="/Login">
+          <Login />
+        </Route>
         <Route exact path="*">
           <p>Not found</p>
+        </Route>
+        <Route exact path="*">
         </Route>
       </Switch>
     </Router>
