@@ -89,7 +89,6 @@ function Dashboard() {
           </div>
           <div className="cs-buttons">
             <a className="button cs-verlofaanvraag">Verlof aanvragen</a>
-            <a className="button cs-verlofopgeven">Verlofreden opgeven</a>
             <a className="button cs-verlofplanning">Verlofplanning</a>
           </div>
           <div className="cs-cards">
