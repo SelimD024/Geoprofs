@@ -48,21 +48,17 @@ namespace GeoCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("EndDate")
-                        .HasColumnType("int");
+                    b.Property<DateOnly?>("EndDate")
+                        .HasColumnType("date");
 
                     b.Property<string>("Reden")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("StartDate")
-                        .HasColumnType("int");
+                    b.Property<DateOnly?>("StartDate")
+                        .HasColumnType("date");
 
                     b.Property<bool?>("Status")
                         .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("VerlofTypeID")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
