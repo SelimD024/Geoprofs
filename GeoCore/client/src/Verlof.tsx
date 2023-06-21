@@ -6,10 +6,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./Components/navbar";
 import "./App.css";
+import axios from "axios";
 
 function Verlof() {
   const [count, setCount] = useState(0);
-
+  const [data, setData] = useState([]);
+  
+  
   useEffect(() => {
     const customCheckboxes = document.querySelectorAll(".custom-checkbox");
 
@@ -46,7 +49,24 @@ function Verlof() {
     }
   };
 
+
+  // Get verlof
+  
+  useEffect(() => {
+    axios.get("http://localhost:5029/api/verlof")
+        .then(response => {
+          setData(response.data); // Set the data in state
+        })
+        .catch(error => {
+          console.error("Error occured", error);
+        });
+  }, []); 
+
+
   return (
+      
+
+      
     <div className="body">
       <Navbar active="Verlof" />
 
@@ -83,38 +103,28 @@ function Verlof() {
         <div className="cs-form verlof">
           <table className="cs-table">
             <tbody>
-              <tr className="cs-table-head">
-                <th>Gebruiker</th>
-                <th>Datum verlof</th>
-                <th>Beschrijving verlof</th>
-                <th>Positie</th>
-                <th>Afwijzen</th>
-                <th>Toewijzen</th>
-              </tr>
-              <tr>
-                <td>John Doe</td>
-                <td>nee</td>
-                <td>1234567890</td>
-                <td>Manager</td>
-                <td className="checkbox-cell ">
-                  <span className="custom-checkbox decline"></span>
-                </td>
-                <td className="checkbox-cell ">
-                  <span className="custom-checkbox accept"></span>
-                </td>
-              </tr>
-              <tr>
-                <td>Jane Smith</td>
-                <td>26/10/1992 - 28/10/1992</td>
-                <td>9876543210</td>
-                <td>Supervisor</td>
-                <td className="checkbox-cell ">
-                  <span className="custom-checkbox decline"></span>
-                </td>
-                <td className="checkbox-cell ">
-                  <span className="custom-checkbox accept"></span>
-                </td>
-              </tr>
+            <tr className="cs-table-head">
+              <th>Gebruiker</th>
+              <th>Datum verlof</th>
+              <th>Beschrijving verlof</th>
+              <th>Positie</th>
+              <th>Afwijzen</th>
+              <th>Toewijzen</th>
+            </tr>
+            {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.id}</td>
+                  <td>{item.startDate} -  <strong>{item.endDate}</strong> </td>
+                  <td>{item.reden}</td>
+                  {/*<td>{item.Positie}</td>*/}
+                  <td className="checkbox-cell ">
+                    <span className="custom-checkbox decline"></span>
+                  </td>
+                  <td className="checkbox-cell ">
+                    <span className="custom-checkbox accept"></span>
+                  </td>
+                </tr>
+            ))}
             </tbody>
           </table>
         </div>
