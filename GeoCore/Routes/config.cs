@@ -6,16 +6,15 @@ public static class RouteConfig
 { 
     public static void SetRoutes(WebApplication app)
     {
-        // Home controller
+        // Route structuur voor onze API
         app.MapControllerRoute(
             name: "api",
-            pattern: "{controller=Api}/{action=Verlof}/{id?}");
-        // {controller=Forms}/
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+
         
-        // {controller=Forms}/
 
     }
-    
+        
      
     
 }   
