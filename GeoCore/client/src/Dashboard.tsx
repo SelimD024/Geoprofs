@@ -7,10 +7,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { faBarsProgress } from "@fortawesome/free-solid-svg-icons";
 import profilePicture from "../src/assets/person.jpeg"
-
+import {PostVerlof} from "./services/api.ts";
+import axios from "axios";
 function Dashboard() {
   const [count, setCount] = useState(0);
-
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState('');
+  const [reden, setReden] = useState("");
+  
   useEffect(() => {
     const buttonsContainer = document.querySelector(".cs-buttons");
     const popUp = document.querySelector(".cs-pop-up");
@@ -49,6 +53,23 @@ function Dashboard() {
     };
   }, []);
 
+  // POST VOOR VERLOF
+   const  PostVerlof = event  => {
+    event.preventDefault();
+    axios.post("http://localhost:5029/api/verlof", {
+      StartDate: startDate,
+      EndDate: endDate,
+      Reden: reden,
+    })
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error("Error occured", error);
+        });
+  }
+  
+  
   return (
     <>
       <div className="body">
@@ -107,13 +128,15 @@ function Dashboard() {
                   </div>
                 </div>
                 <div className="cs-input-forms">
-                  <form action="POST">
+                  <form onSubmit={PostVerlof}>
                     <div className="cs-input">
                       <p>Startdatum</p>
                       <input
                         type="date"
                         className="cs-searchbar"
                         placeholder="Startdatum"
+                        value={startDate}
+                        onChange={e => setStartDate(e.target.value)}
                       />
                     </div>
                     <div className="cs-input">
@@ -122,6 +145,8 @@ function Dashboard() {
                         type="date"
                         className="cs-searchbar"
                         placeholder="Startdatum"
+                        value={endDate}
+                        onChange={e => setEndDate(e.target.value)}
                       />
                     </div>
                     <div className="cs-input">
@@ -130,11 +155,13 @@ function Dashboard() {
                         type="text"
                         className="cs-searchbar"
                         placeholder="Beschrijving aanvraag"
+                        value={reden}
+                        onChange={e => setReden(e.target.value)}
                       />
                     </div>
                     <div className="cs-input-buttons">
                       <a className="button button-grey cs-cancel">Annuleren</a>
-                      <a className="button">Versturen</a>
+                      <button type="submit" className="button" >Versturen</button>
                     </div>
                   </form>
                 </div>
