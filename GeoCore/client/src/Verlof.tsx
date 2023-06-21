@@ -50,7 +50,7 @@ function Verlof() {
   };
 
 
-  // Get verlof
+  // Axios functie dat de data fetcht van de api/verlof api endpoint.
   
   useEffect(() => {
     axios.get("http://localhost:5029/api/verlof")
