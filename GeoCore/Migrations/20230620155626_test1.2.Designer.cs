@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GeoCore.Migrations
 {
     [DbContext(typeof(GeoContext))]
-    [Migration("20230518155602_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230620155626_test1.2")]
+    partial class test12
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ namespace GeoCore.Migrations
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Geoprofs.Models.User", b =>
+            modelBuilder.Entity("GeoCore.Models.User", b =>
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,38 +45,27 @@ namespace GeoCore.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Geoprofs.Models.Verlof", b =>
+            modelBuilder.Entity("GeoCore.Models.Verlof", b =>
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CreatedDate")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GebruikerId")
-                        .HasColumnType("int");
+                    b.Property<DateOnly?>("EndDate")
+                        .HasColumnType("date");
 
                     b.Property<string>("Reden")
                         .HasColumnType("longtext");
+
+                    b.Property<DateOnly?>("StartDate")
+                        .HasColumnType("date");
 
                     b.Property<bool?>("Status")
                         .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GebruikerId");
-
                     b.ToTable("Verloven");
-                });
-
-            modelBuilder.Entity("Geoprofs.Models.Verlof", b =>
-                {
-                    b.HasOne("Geoprofs.Models.User", "Gebruiker")
-                        .WithMany()
-                        .HasForeignKey("GebruikerId");
-
-                    b.Navigation("Gebruiker");
                 });
 #pragma warning restore 612, 618
         }
