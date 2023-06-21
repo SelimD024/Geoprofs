@@ -23,8 +23,18 @@ public static class RouteConfig
             pattern: "register",
             defaults: new {controller="Userauth", action="Register"}
         );
+    
 
         // {controller=Forms}/
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Verlof}/{action=CreateVerlof}/{id?}");
+        
+        app.MapControllerRoute(
+            name: "CreateVerlof",
+            pattern: "verlofaanvraag",
+            defaults: new { controller = "Verlof", action = "CreateVerlof" }
+        );
 
 
 

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import axios from 'axios';
+import {  useEffect } from "react";
 import Navbar from "./Components/navbar";
+import VerlofForm from "./VerlofForm";
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,6 @@ function Dashboard() {
 
     const popUpContents = Array.from(popUp.querySelectorAll(".cs-pop-up .inner > *")) || [];
 
-    // Rest of your code...
 
     const handleButtonClick = (event) => {
       const button = event.target.closest(".button");
@@ -45,36 +44,7 @@ function Dashboard() {
       popUp.removeEventListener("click", handlePopupClick);
     };
   }, []);
-
-  const [verlofData, setVerlofData] = useState({
-    verlofTypeID: '',
-    startDate: '',
-    endDate: '',
-    reden: '',
-  });
-
-  const handleChange = (event) => {
-    setVerlofData({
-      ...verlofData,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    axios
-        .post('http://localhost:44362/api/verlofaanvragen', verlofData)
-        .then((response) => {
-          console.log(response.data);
-          // Toon een bevestigingsbericht aan de gebruiker of voer andere acties uit
-        })
-        .catch((error) => {
-          console.error('Er is een fout opgetreden!', error);
-          // Toon een foutmelding aan de gebruiker
-        });
-  };
-
+  
   return (
       <>
         <div className="body">
@@ -168,37 +138,7 @@ function Dashboard() {
                   <h1 className="cs-head">Verlof opgeven</h1>
 
                   <div className="cs-input-forms">
-                    <form onSubmit={handleSubmit}>
-                      <input
-                          type="text"
-                          name="verlofTypeID"
-                          value={verlofData.verlofTypeID}
-                          onChange={handleChange}
-                          placeholder="VerlofTypeID"
-                      />
-                      <input
-                          type="text"
-                          name="startDate"
-                          value={verlofData.startDate}
-                          onChange={handleChange}
-                          placeholder="Startdatum"
-                      />
-                      <input
-                          type="text"
-                          name="endDate"
-                          value={verlofData.endDate}
-                          onChange={handleChange}
-                          placeholder="Einddatum"
-                      />
-                      <input
-                          type="text"
-                          name="reden"
-                          value={verlofData.reden}
-                          onChange={handleChange}
-                          placeholder="Reden"
-                      />
-                      <button type="submit">Verlof aanvragen</button>
-                    </form>
+                    <VerlofForm />
                   </div>
                 </div>
                 <div className="cs-verlofplanning cs-hidden">
