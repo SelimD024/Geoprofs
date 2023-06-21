@@ -4,18 +4,16 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 
-var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 // ↓ Add the following lines: ↓
-builder.Services.AddSpaStaticFiles(configuration => {
-    configuration.RootPath = "clientapp/dist";
-});
+// builder.Services.AddSpaStaticFiles(configuration => {
+//     configuration.RootPath = "clientapp/dist";
+// });
 // ↑ these lines ↑
 
-var app = builder.Build();
 
 // Add Database connection
 
@@ -27,7 +25,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp",
+    options.AddPolicy("AllowClient",
         builder =>
         {
             builder.WithOrigins("http://localhost:5173") // replace with your React app's origin
@@ -37,7 +35,9 @@ builder.Services.AddCors(options =>
 });
 
 
+// Build application
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -49,10 +49,13 @@ if (!app.Environment.IsDevelopment())
 
 
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCors("AllowClient");
+
 
 app.UseAuthorization();
 
