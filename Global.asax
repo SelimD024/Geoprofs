@@ -1,1 +1,0 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Geoprofs.MvcApplication" Language="C#" %>

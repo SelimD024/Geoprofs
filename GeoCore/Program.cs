@@ -8,11 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// ↓ Add the following lines: ↓
-// builder.Services.AddSpaStaticFiles(configuration => {
-//     configuration.RootPath = "clientapp/dist";
-// });
-// ↑ these lines ↑
 
 
 // Add Database connection
