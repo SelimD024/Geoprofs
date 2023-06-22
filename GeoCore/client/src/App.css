@@ -142,7 +142,7 @@
 
 .cs-body .cs-buttons {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2%;
   margin-bottom: 34px;
 }

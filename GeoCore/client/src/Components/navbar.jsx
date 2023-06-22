@@ -54,7 +54,9 @@ function Navbar(props) {
       </div>
       <ul className="cs-menu">
         <a
-          className={`cs-menu-item ${props.active === "dashboard" ? "selected" : ""}`}
+          className={`cs-menu-item ${
+            props.active === "dashboard" ? "selected" : ""
+          }`}
           onClick={() => (window.location.href = "/")}
         >
           <FontAwesomeIcon icon={faHouse} />
@@ -63,14 +65,18 @@ function Navbar(props) {
         {userRole === "manager" && (
           <React.Fragment>
             <a
-              className={`cs-menu-item ${props.active === "bezetting" ? "selected" : ""}`}
+              className={`cs-menu-item ${
+                props.active === "bezetting" ? "selected" : ""
+              }`}
               onClick={() => (window.location.href = "/bezetting")}
             >
               <FontAwesomeIcon icon={faBinoculars} />
               <li>Bezettings overzicht</li>
             </a>
             <a
-              className={`cs-menu-item ${props.active === "Verlof" ? "selected" : ""}`}
+              className={`cs-menu-item ${
+                props.active === "Verlof" ? "selected" : ""
+              }`}
               onClick={() => (window.location.href = "/Verlof")}
             >
               <FontAwesomeIcon icon={faChartPie} />
@@ -86,19 +92,25 @@ function Navbar(props) {
           {isDropdownOpen && (
             <div className="dropdown-content">
               <a
-                className={`dropdown-item ${userRole === "manager" ? "selected" : ""}`}
+                className={`dropdown-item ${
+                  userRole === "manager" ? "selected" : ""
+                }`}
                 onClick={() => handleFunctionChange("manager")}
               >
                 Manager
               </a>
               <a
-                className={`dropdown-item ${userRole === "employee" ? "selected" : ""}`}
+                className={`dropdown-item ${
+                  userRole === "employee" ? "selected" : ""
+                }`}
                 onClick={() => handleFunctionChange("employee")}
               >
                 Employee
               </a>
               <a
-                className={`dropdown-item ${userRole === "supervisor" ? "selected" : ""}`}
+                className={`dropdown-item ${
+                  userRole === "supervisor" ? "selected" : ""
+                }`}
                 onClick={() => handleFunctionChange("supervisor")}
               >
                 Supervisor
