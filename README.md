@@ -1,5 +1,9 @@
+
 # Geoprofs
 C# 4e periode eindopdracht
+
+### Disclaimer
+Wanneer je verlof heb ingediend maar je ziet hem er niet tussen (check je console tab) als je een CORS weigering ziet installeer **CORS unblock extension**
 
 STAPPENPLAN
 -----------
