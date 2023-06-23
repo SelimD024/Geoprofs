@@ -6,4 +6,5 @@ riderModule.iml
 *.suo
 *.sqlite
 package-lock.json
+node_modules/
 /_ReSharper.Caches/
