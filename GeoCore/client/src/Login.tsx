@@ -21,7 +21,7 @@ function Login() {
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-            /> // | ROLLEN SELECTIE
+            /> 
             <select value={role} onChange={(e) => setRole(e.target.value)}>
                 <option value="">Select role</option>
                 <option value="manager">Manager</option>
