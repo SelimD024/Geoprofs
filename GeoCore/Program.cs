@@ -1,17 +1,10 @@
 ﻿using GeoCore.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-
-
 // Add Database connection
-
 builder.Services.AddDbContextPool<GeoContext>(options => options
     .UseMySql(builder.Configuration.GetConnectionString("GeoConnection"), new MySqlServerVersion(new Version(10, 4, 28)))); // replace with your Server Version
 
@@ -29,10 +22,19 @@ builder.Services.AddCors(options =>
         });
 });
 
-
 // Build application
 var app = builder.Build();
 
+// Retrieve the service provider
+var serviceProvider = app.Services;
+
+// Invoke the seeder
+using (var scope = serviceProvider.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<GeoContext>();
+    var seeder = new MySeeder();
+    seeder.Seed(dbContext);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -42,15 +44,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-
-
 // app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseCors("AllowClient");
-
 
 app.UseAuthorization();
 

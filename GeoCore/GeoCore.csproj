@@ -83,6 +83,7 @@
 
     <ItemGroup>
       <Folder Include="Migrations\" />
+      <Folder Include="wwwroot\" />
     </ItemGroup>
 
 </Project>
