@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 ﻿# Default ignored files
+=======
+# Default ignored files
+>>>>>>> 502729c9ae1c6c0f535f93a62ab2d06668c17d08
 /shelf/
 /workspace.xml
 # Rider ignored files
 /projectSettingsUpdater.xml
+<<<<<<< HEAD
 /.idea.Geoprofs.iml
 /modules.xml
 /contentModel.xml
+=======
+/modules.xml
+/contentModel.xml
+/.idea.Geoprofs.iml
+>>>>>>> 502729c9ae1c6c0f535f93a62ab2d06668c17d08
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
