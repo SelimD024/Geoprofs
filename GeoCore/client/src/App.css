@@ -330,7 +330,7 @@
   position: relative;
 }
 
-.dropdown-menu.show li:hover{
+.dropdown-menu.show li:hover {
   background-color: rgb(189, 202, 184);
 }
 
@@ -338,7 +338,7 @@
   width: 100%;
 }
 
-.cs-body .cs-form .cs-table tbody:first-child{
+.cs-body .cs-form .cs-table tbody:first-child {
   gap: 10px;
   display: grid;
 }
@@ -358,15 +358,14 @@
   grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-
 .cs-body .cs-form.verlof .cs-table tr {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
 }
 
-.cs-body .cs-form.verlof .cs-table tr th:first-child{
-margin: 0;
+.cs-body .cs-form.verlof .cs-table tr th:first-child {
+  margin: 0;
 }
 
 .cs-body .cs-form .cs-table tr th {
@@ -382,7 +381,7 @@ input[type="checkbox"] {
 }
 
 /* Custom checkbox style */
-.checkbox-cell{
+.checkbox-cell {
   display: flex;
   gap: 10px;
 }
@@ -398,22 +397,20 @@ input[type="checkbox"] {
   position: relative;
 }
 
-.custom-checkbox.decline{
-  border: 2px solid red!important;
+.custom-checkbox.decline {
+  border: 2px solid red !important;
 }
 
-.custom-checkbox.accept{
-  border: 2px solid green!important;
+.custom-checkbox.accept {
+  border: 2px solid green !important;
 }
 
-.dropdown-content{
+.dropdown-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  
 }
-
 
 /* Custom checkbox checked style */
 .custom-checkbox.checked {
@@ -425,7 +422,7 @@ input[type="checkbox"] {
 }
 
 .custom-checkbox.checked::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   font-size: 18px;
   color: white;
@@ -435,7 +432,7 @@ input[type="checkbox"] {
 }
 
 .custom-checkbox.decline.checked::before {
-  content: 'X'!important;
+  content: "X" !important;
   position: absolute;
   font-size: 18px;
   color: white;

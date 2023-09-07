@@ -87,7 +87,7 @@ function Navbar(props) {
         <div className="" ref={dropdownRef}>
           <a className="cs-menu-item" onClick={handleDropdownToggle}>
             <FontAwesomeIcon icon={faPen} />
-            <li>Temporary Function</li>
+            <li>Huidige Functie</li>
           </a>
           {isDropdownOpen && (
             <div className="dropdown-content">

@@ -95,15 +95,6 @@ function Dashboard() {
             <div className="cs-card">
               <div className="cs-card-header">
                 <p>Status verlof aanvraag</p>
-                <FontAwesomeIcon icon={faBarsProgress} />
-              </div>
-              <h1>In behandeling</h1>
-              <p>Dec 21, 2022 t/m Januari 10, 2023</p>
-              <p>Vakantie</p>
-            </div>
-            <div className="cs-card">
-              <div className="cs-card-header">
-                <p>Status verlof aanvraag</p>
                 <FontAwesomeIcon icon={faChartPie} />
               </div>
               <h1>In behandeling</h1>
