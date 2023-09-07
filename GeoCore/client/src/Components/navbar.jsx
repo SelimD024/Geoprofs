@@ -84,40 +84,7 @@ function Navbar(props) {
             </a>
           </React.Fragment>
         )}
-        <div className="" ref={dropdownRef}>
-          <a className="cs-menu-item" onClick={handleDropdownToggle}>
-            <FontAwesomeIcon icon={faPen} />
-            <li>Huidige Functie</li>
-          </a>
-          {isDropdownOpen && (
-            <div className="dropdown-content">
-              <a
-                className={`dropdown-item ${
-                  userRole === "manager" ? "selected" : ""
-                }`}
-                onClick={() => handleFunctionChange("manager")}
-              >
-                Manager
-              </a>
-              <a
-                className={`dropdown-item ${
-                  userRole === "employee" ? "selected" : ""
-                }`}
-                onClick={() => handleFunctionChange("employee")}
-              >
-                Employee
-              </a>
-              <a
-                className={`dropdown-item ${
-                  userRole === "supervisor" ? "selected" : ""
-                }`}
-                onClick={() => handleFunctionChange("supervisor")}
-              >
-                Supervisor
-              </a>
-            </div>
-          )}
-        </div>
+
       </ul>
     </div>
   );
