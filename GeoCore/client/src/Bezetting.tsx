@@ -59,13 +59,13 @@ function Bezetting() {
           </div>
           <div className="cs-line"></div>
           <div className="cs-number">
-            <h1>40</h1>
-            <p>Beschikbare uren</p>
+            <h1>10</h1>
+            <p>Benodigde uren</p>
           </div>
           <div className="cs-line"></div>
           <div className="cs-number">
             <h1>40</h1>
-            <p>Beschikbare uren</p>
+            <p>Ingeplande uren</p>
           </div>
         </div>
         <div className="cs-search">

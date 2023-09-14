@@ -4,22 +4,29 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+
+
 // Add Database connection
+
 builder.Services.AddDbContextPool<GeoContext>(options => options
     .UseMySql(builder.Configuration.GetConnectionString("GeoConnection"), new MySqlServerVersion(new Version(10, 4, 28)))); // replace with your Server Version
 
-builder.Services.AddControllers();
+// Add services to the container.
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowClient",
         builder =>
         {
-            builder.WithOrigins("http://localhost:5173") 
+            builder.WithOrigins("http://localhost:5173") // replace with your React app's origin
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
-
 });
 
 
@@ -35,6 +42,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 // app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -42,9 +51,9 @@ app.UseRouting();
 
 app.UseCors("AllowClient");
 
+
 app.UseAuthorization();
 
-// Onze routes ( ga naar de /routes folder)
 RouteConfig.SetRoutes(app);
 
 app.Run();
