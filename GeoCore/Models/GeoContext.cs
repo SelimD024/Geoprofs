@@ -19,7 +19,7 @@ public class GeoContext : DbContext
     public DbSet<Verlof> Verloven { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
+    {   
         UserSeeder.Seed(modelBuilder);
         
         base.OnModelCreating(modelBuilder);
