@@ -1,6 +1,6 @@
 ﻿using GeoCore.Models;
 using Microsoft.EntityFrameworkCore;
-
+using GeoCore.Seeders;
 namespace GeoCore.Models;
 
 public class GeoContext : DbContext
@@ -17,4 +17,12 @@ public class GeoContext : DbContext
     }
     public DbSet<User> Users { get; set; }
     public DbSet<Verlof> Verloven { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {   
+        UserSeeder.Seed(modelBuilder);
+        
+        base.OnModelCreating(modelBuilder);
+    }
+    
 }
