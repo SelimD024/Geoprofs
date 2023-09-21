@@ -13,12 +13,12 @@ public static class UserSeeder
         );
     }
     
-    public static List<User> Users()
-    {
-    
-        
-        
-    }
+    // public static List<User> Users()
+    // {
+    //
+    //     
+    //     
+    // }
     
 }
 

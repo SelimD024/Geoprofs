@@ -29,7 +29,7 @@ function Dashboard() {
 
 
 
-    const handleButtonClick = (event)  => {
+    const handleButtonClick = (event) => {
       const button = event.target.closest(".button");
       if (button) {
         const popupName = button.classList[1];

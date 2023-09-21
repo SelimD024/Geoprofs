@@ -28,20 +28,20 @@ public class AuthController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost]
-    public Task<IActionResult>  AuthCredits([FromBody] UserCredits userCredits)
-    {
-        
-    }
+    // public Task<IActionResult>  AuthCredits([FromBody] UserCredits userCredits)
+    // {
+    //     
+    // }
 
     private string Generate(User user)
     {
         throw new NotImplementedException();
     }
 
-    private User Authenticate(UserCredits userCredits)
-    {
-        var CurrentUser = UserSeeder.
-    }
+    // private User Authenticate(UserCredits userCredits)
+    // {
+    //     var CurrentUser = UserSeeder.
+    // }
 }
 
    
