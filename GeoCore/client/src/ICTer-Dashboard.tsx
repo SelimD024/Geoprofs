@@ -42,7 +42,7 @@ function ICTDashboard() {
 
     return (
         <div className="body">
-            <Navbar active="Verlof" />
+            <Navbar active="ICT Dashboard" />
 
             <div className="cs-body">
                 <div className="cs-header">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../assets/react.svg";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import {faComputer, faHouse} from "@fortawesome/free-solid-svg-icons";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
@@ -81,6 +81,15 @@ function Navbar(props) {
             >
               <FontAwesomeIcon icon={faChartPie} />
               <li>Verlof</li>
+            </a>
+            <a
+                className={`cs-menu-item ${
+                    props.active === "ICT Dashboard" ? "selected" : ""
+                }`}
+                onClick={() => (window.location.href = "/ict-dashboard")}
+            >
+              <FontAwesomeIcon icon={faComputer} />
+              <li>ICT Dashboard</li>
             </a>
           </React.Fragment>
         )}
