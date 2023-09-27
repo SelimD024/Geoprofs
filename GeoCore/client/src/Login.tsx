@@ -1,32 +1,37 @@
-﻿import React, { useState } from 'react';
+﻿import
+    React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory  } from 'react-router-dom';
 
 function Login() {
     const [name, setName] = useState("");
-    const [role, setRole] = useState("");
-    const historyy = useHistory();
-    const handleLogin = (event) => {
+    const [password, setPassword] = useState("");
+    // const historyy = useHistory();
+    const AuthHandler = (event) => {
         event.preventDefault();
-        localStorage.setItem("user", JSON.stringify({ name, role, }));
-
-        // Redirect naar dashboard
-        window.location.href = "/dashboard";
+        axios.post('http://localhost:5029/api/auth', {
+            User: {
+                Name: {name},
+                Password: {password}
+            }
+        })
+            .then (response => {console.log(response)});
     };
 
     return (
-        <form onSubmit={handleLogin}>
+        <form onSubmit={AuthHandler}>
             <input
                 type="text"
                 placeholder="Name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
-            /> 
-            <select value={role} onChange={(e) => setRole(e.target.value)}>
-                <option value="">Select role</option>
-                <option value="manager">Manager</option>
-                <option value="employee">Employee</option>
-            </select>
+                onChange={(e) => setName(e.target.value)}/>
+
+            <input
+            type="password"
+            placeholder="Wachtwoord"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            />
             <button type="submit">Log in</button>
         </form>
     );

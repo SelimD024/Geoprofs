@@ -1,15 +1,21 @@
-﻿namespace  GeoCore.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices.JavaScript;
+
+namespace  GeoCore.Models
 {
     public class Verlof
     {
-        public int? Id { get; set; }
-        // public string VerlofTypeID { get; set; }
-        public DateOnly? StartDate { get; set; }
-        public DateOnly? EndDate { get; set; }
-        public string? Reden { get; set; }
-        public bool? Status { get; set; }
-        public string? Name { get; set; } 
-        public string? Role { get; set; } 
-
+     [Key]
+     public int? VerlofId { get; set; }
+     public int? Status { get; set;}
+     [ForeignKey("User")]
+     public int? UserId { get; set; }
+     public string? Reason { get; set; }
+     public DateOnly? StartDate { get; set; }
+     public DateOnly? EndDate { get; set; }
+     public DateOnly? SubmitDate { get; set; }
+     public DateOnly? ApprovalDate { get; set; }
+     public string? Comment { get; set; }
     } 
 }

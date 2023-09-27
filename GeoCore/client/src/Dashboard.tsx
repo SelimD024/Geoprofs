@@ -1,24 +1,23 @@
 import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+// @ts-ignore
 import Navbar from "./Components/navbar";
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { faBarsProgress } from "@fortawesome/free-solid-svg-icons";
 import profilePicture from "../src/assets/person.jpeg"
-import {PostVerlof} from "./services/api.ts";
 import axios from "axios";
 function Dashboard() {
-  const [count, setCount] = useState(0);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState('');
-  const [reden, setReden] = useState("");
-
-  const [name, setName] = useState("");
-  const [role, setRole] = useState("");
-  const [data, setData] = useState([]);
-  const [user, setUser] = useState(null);
+  // const [count, setCount] = useState(0);
+  // const [startDate, setStartDate] = useState("");
+  // const [endDate, setEndDate] = useState('');
+  // const [reden, setReden] = useState("");
+  //
+  // const [name, setName] = useState("");
+  // const [role, setRole] = useState("");
+  // const [data, setData] = useState([]);
+  // const [user, setUser] = useState(null);
 
   useEffect(() => {
     const buttonsContainer = document.querySelector(".cs-buttons");
