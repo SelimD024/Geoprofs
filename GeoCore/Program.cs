@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Security.Claims;
 using System.Text;
 using GeoCore.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -35,6 +36,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
+            RoleClaimType = ClaimTypes.Role,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]))
         };
     });
@@ -59,8 +61,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseCors("AllowClient");
 app.UseAuthentication();
-app.UseAuthorization();
-
+app.UseAuthorization(); 
 // Onze routes ( ga naar de /routes folder)
 RouteConfig.SetRoutes(app);
 
