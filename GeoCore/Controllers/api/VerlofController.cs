@@ -24,7 +24,7 @@ namespace GeoCore.Controllers.api;
 //     /// <summary>
 //     /// POST HANDLER zorgt ervoor dat er post requests gemaakt kunnen worden
 //     /// </summary>
-//     /// <param name="verlof"></param>
+//     /// <paam name="verlof"></param>
 //     /// <returns></returns>
 //     [HttpPost]
 //     public async Task<IActionResult> Verlof([FromBody] Verlof verlof)
