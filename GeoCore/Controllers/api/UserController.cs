@@ -33,25 +33,19 @@ namespace GeoCore.Controllers.api
         {
             try
             {
-                // Validate the incoming model if needed
                 if (ModelState.IsValid)
                 {
-                    // Create a new User entity
                     var newUser = new User
                     {
                         Name = model.Name,
                         Role = model.Role,
                         Email = model.Email
-                        // Add any other properties as needed
                     };
 
-                    // Add the new user to the context
                     _context.Users.Add(newUser);
 
-                    // Save changes to the database
                     await _context.SaveChangesAsync();
 
-                    // Return the newly created user
                     return CreatedAtAction(nameof(GetUsers), new { id = newUser.UserId }, newUser);
                 }
                 else
@@ -61,7 +55,6 @@ namespace GeoCore.Controllers.api
             }
             catch (Exception ex)
             {
-                // Handle exceptions or validation errors
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
@@ -73,13 +66,13 @@ namespace GeoCore.Controllers.api
 
             if (user == null)
             {
-                return NotFound(); // User not found
+                return NotFound(); 
             }
 
             _context.Users.Remove(user);
-            await _context.SaveChangesAsync(); // Save changes to the database
+            await _context.SaveChangesAsync(); 
 
-            return NoContent(); // Successful deletion
+            return NoContent(); 
         }
     }
 }

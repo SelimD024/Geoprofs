@@ -22,13 +22,11 @@ function ICTDashboard() {
     }, []);
 
     const deleteUser = (userId) => {
-        // Send a DELETE request to your API
+        // Delete req naar api
         axios
             .delete(`http://localhost:5029/api/users/${userId}`)
             .then((response) => {
                 console.log(`User with ID ${userId} has been deleted.`);
-                // Optionally, you can update your user list after successful deletion
-                // Fetch the updated user list or remove the deleted user from the existing list.
             })
             .catch((error) => {
                 console.error(`Error deleting user with ID ${userId}:`, error);
@@ -37,7 +35,7 @@ function ICTDashboard() {
 
     const createUser = (event) => {
         event.preventDefault();
-        // Send a POST request to create a new user
+        // post req createuser
         axios
             .post("http://localhost:5029/api/users", {
                 Name: name,
@@ -46,7 +44,6 @@ function ICTDashboard() {
             })
             .then((response) => {
                 console.log("User created:", response.data);
-                // Optionally, you can update your user list or perform any other actions after user creation.
             })
             .catch((error) => {
                 console.error("Error creating user:", error);
