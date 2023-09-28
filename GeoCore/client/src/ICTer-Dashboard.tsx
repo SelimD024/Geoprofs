@@ -7,11 +7,11 @@ function ICTDashboard() {
     const [data, setData] = useState([]);
     const [name, setName] = useState("");
     const [role, setRole] = useState("");
-    const [email, setEmail] = useState([]);
-    const [userid, setUser] = useState(null);
+    const [email, setEmail] = useState("");
+    const [userId, setUserId] = useState(null); // Correcte naam voor userId
 
     useEffect(() => {
-        // Fetch user data 
+        // Fetch user data
         axios
             .get("http://localhost:5029/api/users")
             .then((response) => {
@@ -21,24 +21,28 @@ function ICTDashboard() {
                 console.error("Error occurred", error);
             });
     }, []);
-    const  CreateUser = event  => {
-        // Create user
-        event.preventDefault();
-        axios.post("http://localhost:5029/api/users", {
-            UserID: userid,
-            Name: name,
-            Role: role,
-            Email: email,
-        })
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error("Error occured", error);
-            });
-    }
 
-   
+    
+
+    const DeleteUser = (userId) => {
+        // Maak een HTTP DELETE-verzoek om de gebruiker te verwijderen
+        axios
+            .delete(`http://localhost:5029/api/users/${userId}`)
+            .then((response) => {
+                console.log(`Gebruiker met ID ${userId} is verwijderd.`);
+                // Na het verwijderen van de gebruiker, kun je de gebruikersgegevens opnieuw ophalen om de bijgewerkte lijst weer te geven.
+                axios.get("http://localhost:5029/api/users")
+                    .then((response) => {
+                        setData(response.data);
+                    })
+                    .catch((error) => {
+                        console.error("Error occurred", error);
+                    });
+            })
+            .catch((error) => {
+                console.error(`Fout bij het verwijderen van gebruiker met ID ${userId}`, error);
+            });
+    };
 
     return (
         <div className="body">
@@ -64,7 +68,9 @@ function ICTDashboard() {
                                 <td>{user.name}</td>
                                 <td>{user.role}</td>
                                 <td>{user.email}</td>
-                                <td> <button className="button-grey">Delete</button> </td>
+                                <td>
+                                    <button className="button-grey" onClick={() => DeleteUser(user.UserId)}>Verwijder</button>
+                                </td>
                             </tr>
                         ))}
                         </tbody>
@@ -80,12 +86,10 @@ function ICTDashboard() {
                     <h1 className="fa-2x">Backup</h1>
                 </div>
                 <div className="custombutton">
-                    <button className="custom-green-button" >
+                    <button className="custom-green-button">
                         Maak Backup
                     </button>
                 </div>
-                
-
             </div>
         </div>
     );

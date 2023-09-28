@@ -27,7 +27,28 @@ namespace GeoCore.Controllers.api;
             var users = _context.Users.ToList();
             return Ok(users);
         }
+        
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser(int id)
+        {
+            Console.WriteLine($"Verwijderen van gebruiker met ID {id}");
+    
+            var user = _context.Users.FirstOrDefault(u => u.UserId == id);
 
-        // And other actions for adding, updating, or deleting users...
+            if (user == null)
+            {
+                Console.WriteLine($"Gebruiker met ID {id} niet gevonden");
+                return NotFound(); // Gebruiker niet gevonden
+            }
+
+            _context.Users.Remove(user);
+            _context.SaveChanges(); // Bewaar de wijzigingen in de database
+
+            Console.WriteLine($"Gebruiker met ID {id} is verwijderd.");
+            return NoContent(); // Succesvolle verwijdering
+        }
+
+
+
     }
 
