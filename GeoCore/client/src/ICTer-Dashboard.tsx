@@ -5,10 +5,9 @@ import "./App.css";
 
 function ICTDashboard() {
     const [data, setData] = useState([]);
-    const [name, setName] = useState("");
-    const [role, setRole] = useState("");
-    const [email, setEmail] = useState("");
-    const [userId, setUserId] = useState(null); // Correcte naam voor userId
+    const [name, setName] = useState(""); // Add name state
+    const [role, setRole] = useState(""); // Add role state
+    const [email, setEmail] = useState(""); // Add email state
 
     useEffect(() => {
         // Fetch user data
@@ -22,25 +21,35 @@ function ICTDashboard() {
             });
     }, []);
 
-    
-
-    const DeleteUser = (userId) => {
-        // Maak een HTTP DELETE-verzoek om de gebruiker te verwijderen
+    const deleteUser = (userId) => {
+        // Send a DELETE request to your API
         axios
             .delete(`http://localhost:5029/api/users/${userId}`)
             .then((response) => {
-                console.log(`Gebruiker met ID ${userId} is verwijderd.`);
-                // Na het verwijderen van de gebruiker, kun je de gebruikersgegevens opnieuw ophalen om de bijgewerkte lijst weer te geven.
-                axios.get("http://localhost:5029/api/users")
-                    .then((response) => {
-                        setData(response.data);
-                    })
-                    .catch((error) => {
-                        console.error("Error occurred", error);
-                    });
+                console.log(`User with ID ${userId} has been deleted.`);
+                // Optionally, you can update your user list after successful deletion
+                // Fetch the updated user list or remove the deleted user from the existing list.
             })
             .catch((error) => {
-                console.error(`Fout bij het verwijderen van gebruiker met ID ${userId}`, error);
+                console.error(`Error deleting user with ID ${userId}:`, error);
+            });
+    };
+
+    const createUser = (event) => {
+        event.preventDefault();
+        // Send a POST request to create a new user
+        axios
+            .post("http://localhost:5029/api/users", {
+                Name: name,
+                Role: role,
+                Email: email,
+            })
+            .then((response) => {
+                console.log("User created:", response.data);
+                // Optionally, you can update your user list or perform any other actions after user creation.
+            })
+            .catch((error) => {
+                console.error("Error creating user:", error);
             });
     };
 
@@ -69,13 +78,48 @@ function ICTDashboard() {
                                 <td>{user.role}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <button className="button-grey" onClick={() => DeleteUser(user.UserId)}>Verwijder</button>
+                                    <button
+                                        className="button-grey"
+                                        onClick={() => deleteUser(user.userId)}
+                                    >
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                         ))}
                         </tbody>
                     </table>
                 </div>
+                <form onSubmit={createUser}>
+                    <div>
+                        <label>Name:</label>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label>Role:</label>
+                        <input
+                            type="text"
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label>Email:</label>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <button type="submit">Create User</button>
+                    </div>
+                </form>
+
 
                 <div className="custombutton">
                     <button className="custom-green-button" >

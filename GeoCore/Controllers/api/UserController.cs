@@ -1,22 +1,22 @@
 ﻿using GeoCore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-
-
-namespace GeoCore.Controllers.api;
-
-
+namespace GeoCore.Controllers.api
+{
     [ApiController]
     [Route("api/users")]
     public class UserController : ControllerBase
     {
-        
         private readonly GeoContext _context;
         private readonly IConfiguration _config;
 
         public UserController(GeoContext context, IConfiguration config)
         {
-        
             _context = context;
             _config = config;
         }
@@ -27,28 +27,59 @@ namespace GeoCore.Controllers.api;
             var users = _context.Users.ToList();
             return Ok(users);
         }
-        
-        [HttpDelete("{id}")]
-        public IActionResult DeleteUser(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUser([FromBody] User model)
         {
-            Console.WriteLine($"Verwijderen van gebruiker met ID {id}");
-    
-            var user = _context.Users.FirstOrDefault(u => u.UserId == id);
+            try
+            {
+                // Validate the incoming model if needed
+                if (ModelState.IsValid)
+                {
+                    // Create a new User entity
+                    var newUser = new User
+                    {
+                        Name = model.Name,
+                        Role = model.Role,
+                        Email = model.Email
+                        // Add any other properties as needed
+                    };
+
+                    // Add the new user to the context
+                    _context.Users.Add(newUser);
+
+                    // Save changes to the database
+                    await _context.SaveChangesAsync();
+
+                    // Return the newly created user
+                    return CreatedAtAction(nameof(GetUsers), new { id = newUser.UserId }, newUser);
+                }
+                else
+                {
+                    return BadRequest(ModelState);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions or validation errors
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
 
             if (user == null)
             {
-                Console.WriteLine($"Gebruiker met ID {id} niet gevonden");
-                return NotFound(); // Gebruiker niet gevonden
+                return NotFound(); // User not found
             }
 
             _context.Users.Remove(user);
-            _context.SaveChanges(); // Bewaar de wijzigingen in de database
+            await _context.SaveChangesAsync(); // Save changes to the database
 
-            Console.WriteLine($"Gebruiker met ID {id} is verwijderd.");
-            return NoContent(); // Succesvolle verwijdering
+            return NoContent(); // Successful deletion
         }
-
-
-
     }
-
+}
