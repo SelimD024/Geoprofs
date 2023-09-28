@@ -7,6 +7,8 @@ import Dashboard from "./Dashboard.tsx";
 import Verlof from "./Verlof.tsx";
 import Login from "./Login.tsx";
 import "./index.css";
+import loginpage from "./Loginpage.tsx";
+import ICTerDashboard from "./ICTer-Dashboard.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -24,6 +26,12 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         </Route>
         <Route exact path="/Dashboard"  component={Dashboard}>
           {/*<Dashboard />*/}
+        </Route>
+        <Route exact path="/ICT-dashboard"  component={ICTerDashboard}>
+          {/*<ICT dashboard />*/}
+        </Route>
+        <Route exact path="/Login"  component={loginpage}>
+          {/*<login pagina />*/}
         </Route>
         <Route exact path="*">
           <p>Not found</p>

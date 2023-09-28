@@ -1,7 +1,6 @@
-﻿using System;
-using System.Linq;
-using GeoCore.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using GeoCore.Models;
+
+namespace GeoCore.Seeders;
 
 public interface ISeeder
 {
@@ -18,9 +17,9 @@ public class MySeeder : ISeeder
         // Create a new user instance
         var user = new User
         {
-            Id = 1,
-            Username = "JohnDoe",
-            Verlofsaldo = 20
+            // Id = 1,
+            // Username = "JohnDoe",
+            // Verlofsaldo = 20
         };
 
         // Add the user to the context

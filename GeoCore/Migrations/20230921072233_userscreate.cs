@@ -5,7 +5,7 @@
 namespace GeoCore.Migrations
 {
     /// <inheritdoc />
-    public partial class _32 : Migration
+    public partial class userscreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
