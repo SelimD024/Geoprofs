@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../assets/react.svg";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import {faComputer, faHouse} from "@fortawesome/free-solid-svg-icons";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faBinoculars } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar(props) {
+  const [userRole, setUserRole] = useState("manager");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const user = JSON.parse(localStorage.getItem('user'));
   const handleFunctionChange = (functionName) => {
     setUserRole(functionName);
     setIsDropdownOpen(false);
@@ -28,11 +28,9 @@ function Navbar(props) {
     }
   };
 
-  /*
-    const saveUserRole = (role) => {
-      localStorage.setItem("userRole", role);
-    };
-  */
+  const saveUserRole = (role) => {
+    localStorage.setItem("userRole", role);
+  };
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutsideDropdown);
@@ -41,12 +39,12 @@ function Navbar(props) {
     };
   }, []);
 
- /* useEffect(() => {
+  useEffect(() => {
     const savedRole = localStorage.getItem("userRole");
     if (savedRole) {
       setUserRole(savedRole);
     }
-  }, []);*/
+  }, []);
 
   return (
     <div className="cs-navbar">
@@ -59,12 +57,12 @@ function Navbar(props) {
           className={`cs-menu-item ${
             props.active === "dashboard" ? "selected" : ""
           }`}
-          onClick={() => (window.location.href = "/dashboard")}
+          onClick={() => (window.location.href = "/")}
         >
           <FontAwesomeIcon icon={faHouse} />
           <li>Dashboard</li>
         </a>
-        {user.role === "manager" && (
+        {userRole === "manager" && (
           <React.Fragment>
             <a
               className={`cs-menu-item ${
@@ -84,9 +82,18 @@ function Navbar(props) {
               <FontAwesomeIcon icon={faChartPie} />
               <li>Verlof</li>
             </a>
+            <a
+                className={`cs-menu-item ${
+                    props.active === "ICT Dashboard" ? "selected" : ""
+                }`}
+                onClick={() => (window.location.href = "/ict-dashboard")}
+            >
+              <FontAwesomeIcon icon={faComputer} />
+              <li>ICT Dashboard</li>
+            </a>
           </React.Fragment>
         )}
-        {/*<div className="" ref={dropdownRef}>
+        <div className="" ref={dropdownRef}>
           <a className="cs-menu-item" onClick={handleDropdownToggle}>
             <FontAwesomeIcon icon={faPen} />
             <li>Temporary Function</li>
@@ -119,7 +126,7 @@ function Navbar(props) {
               </a>
             </div>
           )}
-        </div>*/}
+        </div>
       </ul>
     </div>
   );

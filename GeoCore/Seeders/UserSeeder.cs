@@ -12,5 +12,14 @@ public static class UserSeeder
             new User { UserId = 2, Name = "Cem", Password = "Cem12", Email = "Cem@live.nl", Role = 1 }
         );
     }
+    
+    // public static List<User> Users()
+    //
+    // {
+    //
+    //     
+    //     
+    // }
+    
 }
 

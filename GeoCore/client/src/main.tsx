@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import App from './App.tsx'
-import Bezetting from './Bezetting.tsx'
-import Dashboard from './Dashboard.tsx'
-import Verlof from './Verlof.tsx'
+import App from "./App.tsx";
+import Bezetting from "./Bezetting.tsx";
+import Dashboard from "./Dashboard.tsx";
+import Verlof from "./Verlof.tsx";
 import Login from "./Login.tsx";
-import './index.css'
+import "./index.css";
+import loginpage from "./Loginpage.tsx";
+import ICTerDashboard from "./ICTer-Dashboard.tsx";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Router>
       <Switch>
@@ -25,12 +27,17 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route exact path="/Dashboard"  component={Dashboard}>
           {/*<Dashboard />*/}
         </Route>
+        <Route exact path="/ICT-dashboard"  component={ICTerDashboard}>
+          {/*<ICT dashboard />*/}
+        </Route>
+        <Route exact path="/Login"  component={loginpage}>
+          {/*<login pagina />*/}
+        </Route>
         <Route exact path="*">
           <p>Not found</p>
         </Route>
-        <Route exact path="*">
-        </Route>
+        <Route exact path="*"></Route>
       </Switch>
     </Router>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
