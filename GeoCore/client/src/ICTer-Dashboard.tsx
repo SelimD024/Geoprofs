@@ -68,6 +68,7 @@ function ICTDashboard() {
                             <th>Email</th>
                             <th>Verwijder Gebruiker</th>
                         </tr>
+                        
 
                         {data.map((user, index) => (
                             <tr key={index}>
@@ -87,42 +88,62 @@ function ICTDashboard() {
                         </tbody>
                     </table>
                 </div>
-                <form onSubmit={createUser}>
-                    <div>
-                        <label>Name:</label>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label>Role:</label>
-                        <input
-                            type="text"
-                            value={role}
-                            onChange={(e) => setRole(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label>Email:</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <button type="submit">Create User</button>
-                    </div>
-                </form>
-
-
-                <div className="custombutton">
-                    <button className="custom-green-button" >
-                        Maak Gebruiker
-                    </button>
+                
+                <div className="upp cs-form verlof">
+                    <table className="cs-table">
+                        <tbody>
+                        <tr className="cs-table-head">
+                            <th>Gebruiker</th>
+                            <th>Rol</th>
+                            <th>Email</th>
+                            <th>Maak Gebruiker</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <label>Name:</label>
+                                    <input
+                                        type="text"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                    />
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <label>Role:</label>
+                                    <input
+                                        type="text"
+                                        value={role}
+                                        onChange={(e) => setRole(e.target.value)}
+                                    />
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <label>Email:</label>
+                                    <input
+                                        type="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </div>
+                            </td>
+                            <td>
+                                <form onSubmit={createUser}>
+                                <button className="cs-buttons"  type="submit">Create User</button>
+                                </form>
+                            </td>
+                        </tr>
+                      
+                        </tbody>
+                    </table>
                 </div>
+
+
+
+
+              
                 <div className="cs-header">
                     <h1 className="fa-2x">Backup</h1>
                 </div>
